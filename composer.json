@@ -1,0 +1,33 @@
+{
+    "name": "stuartcusackie/cdom",
+    "license": "MIT",
+    "description": "Add classes to markup in a Laravel project.",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "simplehtmldom/simplehtmldom": "^2.0@RC"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "stuartcusackie\\cdom\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stuart Cusack",
+            "email": "stuart@stuartcusack.ie",
+            "homepage": "https://stuartcusack.ie",
+            "role": "President"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "stuartcusackie\\cdom\\ServiceProvider"
+            ]
+        }
+    }
+}
