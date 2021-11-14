@@ -40,6 +40,19 @@ Set up your config file: config/cdom.php
 ]
 ```
 
+## If using Tailwind
+
+You'll need to add the config file to the purge:
+
+**tailwind.config.js**
+```
+purge: {
+	content: [
+		'./config/cdom.php'
+	]
+},
+```
+
 ## Usage
 
 ```
