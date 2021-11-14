@@ -61,7 +61,7 @@ class cdom {
 	/**
 	 * Add target="_blank" to simpledom nodes when
 	 * the url is external or for a pdf.
-	 * Useful in content editors (bard).
+	 * Useful in content editors.
 	 * 
 	 * @param array $node
 	 * @return simplehtmldom\HtmlDocument
