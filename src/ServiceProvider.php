@@ -26,7 +26,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/cdom.php' => config_path('cdom.php'),
+            __DIR__.'/../config/cdom.php' => config_path('cdom.php'),
         ], 'config');
     }
 }
