@@ -16,6 +16,7 @@
 return [
 
 	'options' => [
+		'default_style' => 'style1',
 		'add_external_links' => true
 	],
 

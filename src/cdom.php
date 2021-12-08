@@ -9,7 +9,53 @@ class cdom {
 	protected $client;
 
 	function __construct() {
+
 		$this->client = new HtmlDocument();
+
+		if(!file_exists(base_path('config/cdom.php'))) {
+        	throw new \Exception('CDOM config file missing. Please publish it.');
+        }
+
+        if(!is_array(config('cdom.styles'))) {
+    		throw new \Exception('Invalid CDOM config file. Please republish it.');
+    	}
+
+	}
+
+	/**
+	 * Return the style config array.
+	 * 
+	 * @param $style string
+	 * @return array
+	 */
+	public function getStyleConfig($style) {
+
+        if(is_null($style)) {
+        	return $this->getDefaultStyle();
+        }
+
+        return config('cdom.styles.' . $style);
+
+	}
+
+	/**
+	 * Return the style config array
+	 * or fallback to the first if it
+	 * doesn't exist.
+	 * 
+	 * @param $style string
+	 * @return array
+	 */
+	public function getDefaultStyle() {
+
+		$default = config('cdom.styles.default_style');
+
+		if(!is_array(config('cdom.styles.' . $default))) {
+    		throw new \Exception('CDOM default style does not exist. Please republish your config.');
+    	}
+
+        return config('cdom.styles.' . $default);
+
 	}
 
 	/**
@@ -19,20 +65,12 @@ class cdom {
      * @param $style string
      * @return string (markup)
      */
-    public function transform($markup, $style = 'style1') {
+    public function transform(string $markup, string $style = null) {
 
     	$client = new HtmlDocument();
     	$html = $client->load($markup);
-
-    	$styleConfig = config('cdom.styles.' . $style);
-
-    	if(!$styleConfig) {
-        	throw new \Exception('CDOM config style missing.');
-        }
+    	$styleConfig = $this->getStyleConfig($style);
     	
-        if(config('dom.options.add_external_links')) {
-        	$html = $this->addExternalLinks($html);
-        }
 
         return $this->addStyleClasses($html, $styleConfig);
     }
