@@ -11,7 +11,7 @@ if (! function_exists('cdom')) {
      * @param $style string
      * @return string
      */
-    function cdom($markup, $style = 'style1') {
+    function cdom($markup, $style = null) {
         $cdom = new cdom();
         return $cdom->transform($markup, $style);
     }

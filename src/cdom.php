@@ -31,7 +31,7 @@ class cdom {
 	public function getStyleConfig($style) {
 
         if(is_null($style)) {
-        	return $this->getDefaultStyle();
+        	return $this->getDefaultStyleConfig();
         }
 
         return config('cdom.styles.' . $style);
@@ -39,16 +39,14 @@ class cdom {
 	}
 
 	/**
-	 * Return the style config array
-	 * or fallback to the first if it
-	 * doesn't exist.
+	 * Return the default style config.
 	 * 
 	 * @param $style string
 	 * @return array
 	 */
-	public function getDefaultStyle() {
+	public function getDefaultStyleConfig() {
 
-		$default = config('cdom.styles.default_style');
+		$default = config('cdom.options.default_style');
 
 		if(!is_array(config('cdom.styles.' . $default))) {
     		throw new \Exception('CDOM default style does not exist. Please republish your config.');
@@ -70,9 +68,9 @@ class cdom {
     	$client = new HtmlDocument();
     	$html = $client->load($markup);
     	$styleConfig = $this->getStyleConfig($style);
-    	
 
         return $this->addStyleClasses($html, $styleConfig);
+
     }
 
 	/**
