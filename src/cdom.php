@@ -34,6 +34,10 @@ class cdom {
         	return $this->getDefaultStyleConfig();
         }
 
+        if(!is_array(config('cdom.styles.' . $style))) {
+    		throw new \Exception('CDOM style "' . $style . '" does not exist. Please check your config.');
+    	}
+
         return config('cdom.styles.' . $style);
 
 	}
@@ -49,7 +53,7 @@ class cdom {
 		$default = config('cdom.options.default_style');
 
 		if(!is_array(config('cdom.styles.' . $default))) {
-    		throw new \Exception('CDOM default style does not exist. Please republish your config.');
+    		throw new \Exception('CDOM default style does not exist. Please check your config.');
     	}
 
         return config('cdom.styles.' . $default);
