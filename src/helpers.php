@@ -9,11 +9,12 @@ if (! function_exists('cdom')) {
      * 
      * @param $markup string
      * @param $style string
+     * @param $overrides array
      * @return string
      */
-    function cdom($markup, $style = null) {
+    function cdom(string $markup, string $style = null, array $overrides = []) {
         $cdom = new cdom();
-        return $cdom->transform($markup, $style);
+        return $cdom->transform($markup, $style, $overrides);
     }
 }
 

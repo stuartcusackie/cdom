@@ -23,12 +23,12 @@ return [
 	'styles' => [
 
 		'style1' => [
-			'a' => 'underline',
-			'h1' => 'text-5xl mb-12',
-			'h2' => 'text-4xl mb-6 mb-3 mt-12 first:mt-0',
-			'h3' => 'text-3xl mb-3 mt-12 first:mt-0',
-			'h4' => 'text-3xl font-semibold mb-3',
-			'h5' => 'text-2xl font-semibold mb-3',
+			'a' => 'underline text-blue-500 hover:text-blue-900 visited:text-blue-900',
+			'h1' => 'text-5xl 2xl:text-6xl font-display font-bold mb-12 text-highlight-primary',
+			'h2' => 'text-4xl 2xl:text-5xl font-display font-semibold mb-8 mb-3 mt-12 first:mt-0',
+			'h3' => 'text-3xl 2xl:text-4xl font-display font-semibold mb-6 mt-12 first:mt-0',
+			'h4' => 'text-2xl 2xl:text-3xl mb-6',
+			'h5' => 'text-xl 2xl:text-2xl font-semibold mb-4',
 			'ul' => 'pl-5 list-disc',
 			'ol' => 'pl-5 list-decimal',
 			'li' => 'mb-2 last:mb-0',
@@ -39,8 +39,27 @@ return [
 			'table tr' => 'border-b border-gray-200 odd:bg-gray-100',
 			'table td, table th' => 'border-l px-3 py-1 border-gray-200',
 			'table th' => 'odd:bg-gray-200'
+		],
+
+	],
+
+	/**
+	 * Classes will be completely replaced, they will not be merged.
+	 */
+	'overrides' => [
+
+		'headings_sm' => [
+			'h1' => 'text-4xl 2xl:text-5xl font-display font-bold mb-12 text-highlight-primary',
+			'h2' => 'text-3xl 2xl:text-4xl font-display font-semibold mb-8 mt-12 first:mt-0',
+			'h3' => 'text-2xl 2xl:text-3xl font-display font-semibold mb-6 mt-12 first:mt-0',
+			'h4' => 'text-xl 2xl:text-2xl mb-3',
+			'h5' => 'text-lg 2xl:text-xl font-semibold mb-3',
+		],
+
+		'text_lg' => [
+			'p, ul, ol' => 'mb-4 last:mb-0 text-xl 2xl:text-2xl',
 		]
 
 	]
-
+	
 ];
