@@ -77,6 +77,22 @@ class cdom {
 
     }
 
+    /**
+     * Get the classes for a single element in a
+     * style config
+     * 
+     * @param $el string
+     * @param $style string
+     * @return string (markup)
+     */
+    public function elClasses(string $el, string $style = null) {
+
+    	$styleConfig = $this->getStyleConfig($style);
+
+        return $styleConfig[$el] ?? '';
+
+    }
+
 	/**
 	 * Loop each element in the style config and 
 	 * add classes to a markup string. 

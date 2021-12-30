@@ -42,7 +42,14 @@ Set up your config file: config/cdom.php
 
 ## Usage
 
+To transform markup use the `cdom` helper. You can optionally pass a style name from your config or let it fall back to the default:
 ```
 {!! cdom($content) !!}
 {!! cdom($content, 'yourconfigstylename') !!}
+```
+
+To get the classes for a single HTML element from your style config you can use the `cdomel` helper. You can optionally pass a style name from your config or let it fall back to the default:
+```
+<h1 class="{{ cdomel('h1') }}">Heading</h1>
+<a href="/" class="{{ cdomel('a', 'style1') }}">Link</a>
 ```

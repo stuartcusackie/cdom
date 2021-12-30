@@ -17,6 +17,22 @@ if (! function_exists('cdom')) {
     }
 }
 
+if (! function_exists('cdomel')) {
+
+    /**
+     * Return classes for a single element
+     * and style
+     * 
+     * @param $el string
+     * @param $style string
+     * @return string
+     */
+    function cdomel($el, $style = null) {
+        $cdom = new cdom();
+        return $cdom->elClasses($el, $style);
+    }
+}
+
 
 if (! function_exists('is_external_url')) {
 
