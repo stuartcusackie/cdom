@@ -25,7 +25,7 @@ return [
 		'style1' => [
 			'a' => 'underline text-blue-500 hover:text-blue-900 visited:text-blue-900',
 			'h1' => 'text-5xl 2xl:text-6xl font-display font-bold mb-12 text-highlight-primary',
-			'h2' => 'text-4xl 2xl:text-5xl font-display font-semibold mb-8 mb-3 mt-12 first:mt-0',
+			'h2' => 'text-4xl 2xl:text-5xl font-display font-semibold mb-8 mt-12 first:mt-0',
 			'h3' => 'text-3xl 2xl:text-4xl font-display font-semibold mb-6 mt-12 first:mt-0',
 			'h4' => 'text-2xl 2xl:text-3xl mb-6',
 			'h5' => 'text-xl 2xl:text-2xl font-semibold mb-4',
