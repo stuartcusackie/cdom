@@ -155,7 +155,7 @@ class cdom {
 
 				foreach($html->find($els) as $node) {
 
-					$node->addClass($styles);
+					$node->class = $styles;
 
 		    	}
 			}
