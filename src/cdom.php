@@ -88,7 +88,7 @@ class cdom {
      * @param $overrides array
      * @return string (markup)
      */
-    public function transform(string $markup, string $style = null,  array $overrides = []) {
+    public function transform(string $markup, string $style = null, $overrides = []) {
 
     	$client = new HtmlDocument();
     	$html = $client->load($markup);
@@ -145,20 +145,24 @@ class cdom {
 	 * @param $overrides array
 	 * @return simplehtmldom\HtmlDocument
 	 */
-	private function overrideElementClasses($html, array $overrides) {
+	private function overrideElementClasses($html, $overrides) {
 
-		foreach($overrides as $name) {
+		if(!is_null($overrides)) {
 
-			$overrideConfig = $this->getOverideConfig($name);
+			foreach($overrides as $name) {
 
-			foreach($overrideConfig as $els => $styles) {
+				$overrideConfig = $this->getOverideConfig($name);
 
-				foreach($html->find($els) as $node) {
+				foreach($overrideConfig as $els => $styles) {
 
-					$node->class = $styles;
+					foreach($html->find($els) as $node) {
 
-		    	}
+						$node->class = $styles;
+
+			    	}
+				}
 			}
+			
 		}
 
 		return $html;
