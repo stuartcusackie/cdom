@@ -12,7 +12,7 @@ if (! function_exists('cdom')) {
      * @param $overrides array
      * @return string
      */
-    function cdom(string $markup, string $style = null, $overrides = []) {
+    function cdom($markup = '', string $style = null, $overrides = []) {
         $cdom = new cdom();
         return $cdom->transform($markup, $style, $overrides);
     }

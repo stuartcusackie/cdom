@@ -88,7 +88,7 @@ class cdom {
      * @param $overrides array
      * @return string (markup)
      */
-    public function transform(string $markup, string $style = null, $overrides = []) {
+    public function transform($markup = '', string $style = null, $overrides = []) {
 
     	$client = new HtmlDocument();
     	$html = $client->load($markup);
