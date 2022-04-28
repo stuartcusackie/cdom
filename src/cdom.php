@@ -112,8 +112,20 @@ class cdom {
     public function elClasses(string $el, string $style = null) {
 
     	$styleConfig = $this->getStyleConfig($style);
+    	$classString = '';
 
-        return $styleConfig[$el] ?? '';
+    	// Find multiple matches
+		foreach($styleConfig as $targets => $classes)
+		{
+			foreach(explode(', ', $targets) as $target)
+			{
+				if($target == $el) {
+					$classString .= ' ' . $classes;
+				}
+			}
+		}
+
+        return trim($classString);
 
     }
 
