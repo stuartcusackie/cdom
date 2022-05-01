@@ -40,27 +40,6 @@ You can set up multiple styles for your application.
 ]
 ```
 
-You can also set up **overrides** - A handy way to modify one of your styles.
-
-**Example override config**
-```
-'overrides' => [
-
-	'headings_sm' => [
-		'h1' => 'text-4xl 2xl:text-5xl font-display font-bold mb-12 text-highlight-primary',
-		'h2' => 'text-3xl 2xl:text-4xl font-display font-semibold mb-8 mt-12 first:mt-0',
-		'h3' => 'text-2xl 2xl:text-3xl font-display font-semibold mb-6 mt-12 first:mt-0',
-		'h4' => 'text-xl 2xl:text-2xl mb-3',
-		'h5' => 'text-lg 2xl:text-xl font-semibold mb-3',
-	],
-
-	'text_lg' => [
-		'p, ul, ol' => 'mb-4 last:mb-0 text-xl 2xl:text-2xl',
-	]
-
-]
-```
-
 ## Usage
 
 To transform markup use the `cdom` helper.
@@ -69,7 +48,6 @@ You can also pass an array of overrides.
 ```
 {!! cdom($content) !!}
 {!! cdom($content, 'yourconfigstylename') !!}
-{!! cdom($content, 'yourconfigstylename', ['override1', 'override2']) !!}
 ```
 
 To get the classes for a single HTML element from your style config you can use the `cdomel` helper. You can optionally pass a style name from your config or let it fall back to the default:

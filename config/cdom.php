@@ -43,25 +43,6 @@ return [
 			'td, th' => 'border-l px-3 py-1 border-gray-200 text-left'
 		],
 
-	],
-
-	/**
-	 * Classes will be completely replaced, they will not be merged.
-	 */
-	'overrides' => [
-
-		'headings_sm' => [
-			'h1' => 'text-4xl 2xl:text-5xl font-display font-bold mb-12 text-highlight-primary',
-			'h2' => 'text-3xl 2xl:text-4xl font-display font-semibold mb-8 mt-12 first:mt-0',
-			'h3' => 'text-2xl 2xl:text-3xl font-display font-semibold mb-6 mt-12 first:mt-0',
-			'h4' => 'text-xl 2xl:text-2xl mb-3',
-			'h5' => 'text-lg 2xl:text-xl font-semibold mb-3',
-		],
-
-		'text_lg' => [
-			'p, ul, ol' => 'mb-4 last:mb-0 text-xl 2xl:text-2xl',
-		]
-
 	]
 	
 ];

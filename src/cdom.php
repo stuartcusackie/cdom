@@ -61,26 +61,6 @@ class cdom {
 	}
 
 	/**
-	 * Return an override config.
-	 * 
-	 * @param $name string
-	 * @return array
-	 */
-	public function getOverideConfig($name) {
-
-        if(is_null($name)) {
-        	throw new \Exception('Cannot use NULL for cdom override.');
-        }
-
-        if(!is_array(config('cdom.overrides.' . $name))) {
-    		throw new \Exception('CDOM element override "' . $override . '" does not exist. Please check your config.');
-    	}
-
-        return config('cdom.overrides.' . $name);
-
-	}
-
-	/**
      * Apply classes and attributes to content strings.
      * 
      * @param $markup string (markup)
@@ -95,7 +75,6 @@ class cdom {
     	$styleConfig = $this->getStyleConfig($style);
 
         $html = $this->addStyleClasses($html, $styleConfig);
-        $html = $this->overrideElementClasses($html, $overrides);
 
         return $html;
 
@@ -145,36 +124,6 @@ class cdom {
 				$node->addClass($classes);
 			}
 
-		}
-
-		return $html;
-	}
-
-	/**
-	 * Replace the classes for specific elements
-	 * 
-	 * @param $html simplehtmldom\HtmlDocument
-	 * @param $overrides array
-	 * @return simplehtmldom\HtmlDocument
-	 */
-	private function overrideElementClasses($html, $overrides) {
-
-		if(!is_null($overrides)) {
-
-			foreach($overrides as $name) {
-
-				$overrideConfig = $this->getOverideConfig($name);
-
-				foreach($overrideConfig as $els => $styles) {
-
-					foreach($html->find($els) as $node) {
-
-						$node->class = $styles;
-
-			    	}
-				}
-			}
-			
 		}
 
 		return $html;
