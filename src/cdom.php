@@ -152,7 +152,7 @@ class cdom {
 	 * @param $style string
 	 * @return simplehtmldom\HtmlDocument
 	 */
-	private function addStyleClasses($html, string $style) {
+	private function addStyleClasses($html, string $style = null) {
 
 		$styleConfig = $this->getStyleConfig($style);
 
