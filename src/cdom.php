@@ -43,6 +43,21 @@ class cdom {
 	}
 
 	/**
+	 * Return the wrappers config array.
+	 * 
+	 * @return array
+	 */
+	public function getWrappersConfig() {
+
+        if(!is_array(config('cdom.wrappers'))) {
+    		return [];
+    	}
+
+        return config('cdom.wrappers');
+
+	}
+
+	/**
 	 * Return the default style config.
 	 * 
 	 * @param $style string
@@ -70,11 +85,9 @@ class cdom {
      */
     public function transform($markup = '', string $style = null, $overrides = []) {
 
-    	$client = new HtmlDocument();
-    	$html = $client->load($markup);
-    	$styleConfig = $this->getStyleConfig($style);
-
-        $html = $this->addStyleClasses($html, $styleConfig);
+    	$html = $this->client->load($markup);
+    	$html = $this->addWrapperElements($html);
+        $html = $this->addStyleClasses($html, $style);
 
         return $html;
 
@@ -108,17 +121,42 @@ class cdom {
 
     }
 
+    /**
+	 * Loop each element in the wrappers config
+	 * and wrap the appropriate elements
+	 * 
+	 * @param $html simplehtmldom\HtmlDocument
+	 * @return simplehtmldom\HtmlDocument
+	 */
+    private function addWrapperElements($html) {
+
+		$wrappersConfig = $this->getWrappersConfig();
+
+		foreach($wrappersConfig as $elements => $wrapper) {
+
+			foreach($html->find($elements) as $node) {
+				$node->outertext = str_replace('$el', $node->outertext, $wrapper);
+			}
+
+		}
+
+		$html->save();
+		return $this->client->load($html);
+	}
+
 	/**
 	 * Loop each element in the style config and 
 	 * add classes to a markup string. 
 	 * 
 	 * @param $html simplehtmldom\HtmlDocument
-	 * @param $style array
+	 * @param $style string
 	 * @return simplehtmldom\HtmlDocument
 	 */
-	private function addStyleClasses($html, array $style) {
+	private function addStyleClasses($html, string $style) {
 
-		foreach($style as $elements => $classes) {
+		$styleConfig = $this->getStyleConfig($style);
+
+		foreach($styleConfig as $elements => $classes) {
 
 			foreach($html->find($elements) as $node) {
 				$node->addClass($classes);

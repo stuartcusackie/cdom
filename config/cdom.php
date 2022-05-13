@@ -37,12 +37,19 @@ return [
 			'li' => 'mb-2 last:mb-0',
 			'p, ul, ol' => 'mb-4 last:mb-0',
 			'blockquote' => 'border-l-8 p-3 mb-5 text-xl border-gray-200',
-			'table' => 'w-full border-r border-gray-200 mb-16',
+			'table' => 'w-full table-auto border-r border-gray-200 mb-12 last:mb-0',
 			'tbody' => 'border-t border-gray-200',
 			'tr' => 'border-b border-gray-200 even:bg-gray-100',
 			'td, th' => 'border-l px-3 py-1 border-gray-200 text-left'
 		],
 
+	],
+
+	/**
+	 * Wrap elements in other elements
+	'wrappers' => [
+		'table' => '<div class="overflow-x-scroll whitespace-nowrap mb-12 last:mb-0">$el</div>'
 	]
+	*/
 	
 ];
