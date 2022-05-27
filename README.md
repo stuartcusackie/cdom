@@ -18,6 +18,19 @@ php artisan vendor:publish
 
 You can set up multiple styles for your application.
 
+## Tailwind
+
+Add the config file to your Tailwind Purge:
+
+```
+purge: {
+  content: [
+    ...
+    './config/cdom.php'
+  ]
+},
+```
+
 **Example style config**
 ```
 'style1' => [
