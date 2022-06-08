@@ -86,6 +86,11 @@ class cdom {
     public function transform($markup = '', string $style = null, $overrides = []) {
 
     	$html = $this->client->load($markup);
+
+    	if(config('cdom.options.remove_list_nesting')) {
+    		$html = $this->removeListParagraphs($html);
+    	}
+    	
     	$html = $this->addWrapperElements($html);
         $html = $this->addStyleClasses($html, $style);
 
@@ -120,6 +125,25 @@ class cdom {
         return trim($classString);
 
     }
+
+    /**
+	 * Find and remove paragraphs that are nested
+	 * withing list items (prose mirror problem)
+	 * 
+	 * @param $html simplehtmldom\HtmlDocument
+	 * @return simplehtmldom\HtmlDocument
+	 */
+    private function removeListParagraphs($html) {
+
+		foreach($html->find('li p') as $node) {
+			$node->outertext = $node->innertext;
+		}
+
+		$html->save();
+		return $this->client->load($html);
+
+	}
+		
 
     /**
 	 * Loop each element in the wrappers config

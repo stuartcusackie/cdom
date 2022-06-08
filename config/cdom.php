@@ -17,7 +17,8 @@ return [
 
 	'options' => [
 		'default_style' => 'style1',
-		'add_external_links' => true
+		'add_external_links' => true,
+		'remove_list_nesting' => false
 	],
 
 	/**
