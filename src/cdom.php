@@ -90,6 +90,10 @@ class cdom {
     	if(config('cdom.options.remove_list_nesting')) {
     		$html = $this->removeListParagraphs($html);
     	}
+
+    	if(config('cdom.options.add_external_links')) {
+        	$html = $this->addExternalLinks($html);
+        }
     	
     	$html = $this->addWrapperElements($html);
         $html = $this->addStyleClasses($html, $style);
@@ -199,11 +203,11 @@ class cdom {
 	 * @param array $node
 	 * @return simplehtmldom\HtmlDocument
 	 */
-	private function addExternalLinks($node) {
+	private function addExternalLinks($html) {
 
 		foreach($html->find('a') as $node) {
 
-            if($this->is_external_url($node->href) || str_ends_with($node->href, '.pdf')) {
+            if(is_external_url($node->href) || str_ends_with($node->href, '.pdf')) {
 				$node->target = '_blank';
 			}
 
