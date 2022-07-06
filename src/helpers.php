@@ -60,3 +60,20 @@ if (! function_exists('is_external_url')) {
         }
     }
 }
+
+if (! function_exists('get_domain_name')) {
+
+    /**
+     * Get a domain name, without protocol
+     * from a url.
+     * 
+     * @param string $url
+     * @return string
+     */
+    function get_domain_name($url) {
+
+        $parse = parse_url($url);
+
+        return $parse['host'] ?? null;
+    }
+}
