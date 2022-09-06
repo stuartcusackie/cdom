@@ -2,6 +2,8 @@
 
 A helper function that adds classes to elements in html strings. Useful for Tailwind projects. Designed for Laravel.
 
+**IMPORTANT**: You are probably better off using Tailwinds Typography Plugin.
+
 ## Installation
 
 ```
