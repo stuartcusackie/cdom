@@ -2,8 +2,6 @@
 
 A helper function that adds classes to elements in html strings. Useful for Tailwind projects. Designed for Laravel.
 
-**IMPORTANT**: You are probably better off using Tailwinds Typography Plugin.
-
 ## Installation
 
 ```
@@ -14,6 +12,17 @@ composer require stuartcusackie/cdom
 
 ```
 php artisan vendor:publish
+```
+
+## Tailwind Purge
+
+Tailwind will need to know about this cdom config file so that classes are maintained in the purge.
+
+```
+content: [
+  ...
+  './config/cdom.php'
+],
 ```
 
 ## Config
